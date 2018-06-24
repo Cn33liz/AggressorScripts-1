@@ -21,7 +21,7 @@ set BEACON_OUTPUT_PS {
 	foreach $temp (split("\n", ["$2" trim])) {
 		($name, $ppid, $pid, $arch, $user, $session) = split("\t", $temp);
 		# highlight AV processes in RED.
-		if(iff($name in @av,true,false)) {
+		if(iff($name in @av,1,0)) {
 		push(@ps, %(pid => $pid, entry => "\c4 $[5]pid $[5]ppid $[28]name $[5]arch $[11]session $user \o"));
 		# highlight explorer , winlogon in BLUE 
 		} else if ($name eq "explorer.exe" || $name eq "winlogon.exe") {
